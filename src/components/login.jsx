@@ -110,9 +110,7 @@ export default function Login() {
               </span>
             </div>
           </div>
-
-          <div className="mt-6 text-center">
-          
+          <div className="mt-6 text-center">  
           </div>
         </div>
       </div>

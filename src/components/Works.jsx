@@ -23,7 +23,6 @@ const ProjectCard = ({ index, name, description, image, url }) => {
         glarePosition="all"
         className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full group bg-white/5 backdrop-blur-sm border border-white/10"
       >
-        {/* Image container */}
         <motion.div 
           className="relative w-full h-64 overflow-hidden"
           initial={{ y: 0 }}

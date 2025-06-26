@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
-
 import { Hero, Navbar, Works, StarsCanvas } from "./components";
 import Blogs from "./components/Blogs";
 import Register from "./components/user/Register";

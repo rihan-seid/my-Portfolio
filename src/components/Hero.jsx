@@ -27,11 +27,9 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-white to-amber-100 text-gray-900 py-20 px-6 sm:px-12 lg:px-16 min-h-[90vh]">
-      {/* Background Elements */}
       <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-amber-200 rounded-full blur-[120px] opacity-40 z-0" />
       <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-amber-100 rounded-full blur-[120px] opacity-30 z-0" />
       
-      {/* Floating Door Elements */}
       {floatingDoors.map((door, i) => (
         <motion.div
           key={`door-${i}`}
@@ -57,7 +55,6 @@ const Hero = () => {
         </motion.div>
       ))}
 
-      {/* Decorative Elements */}
       {decorativeElements.map((el, i) => (
         <motion.div
           key={`dec-${i}`}
@@ -81,7 +78,6 @@ const Hero = () => {
       ))}
 
       <div className="relative z-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 h-full">
-        {/* Left Content */}
         <div className="flex flex-col gap-8 order-2 lg:order-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -117,7 +113,7 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-lg sm:text-xl text-gray-700 max-w-2xl leading-relaxed"
           >
-            Victor Door Company brings 25 years of craftsmanship to your threshold. 
+            Victor Door Company brings x years of craftsmanship to your threshold. 
             Premium materials, precision engineering, and timeless designs that elevate any space.
           </motion.p>
 
@@ -164,14 +160,12 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right Hero Illustration - Door Showcase */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="relative h-[400px] lg:h-[500px] order-1 lg:order-2"
         >
-          {/* Main Door Image */}
           <div className="absolute inset-0 bg-white/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-amber-100 shadow-xl z-10 transition-all duration-500 hover:shadow-2xl">
             <img
               src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
@@ -180,13 +174,11 @@ const Hero = () => {
               loading="eager"
             />
             
-            {/* Victor Logo Badge */}
             <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full shadow-sm flex items-center gap-2">
               <div className="w-6 h-6 bg-amber-600 rounded-full flex items-center justify-center text-white font-bold text-xs">V</div>
               <span className="text-sm font-medium text-amber-800">Victor Doors™</span>
             </div>
 
-            {/* Door Style Indicators */}
             <motion.div 
               className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 flex gap-3"
               initial={{ y: 15, opacity: 0 }}
