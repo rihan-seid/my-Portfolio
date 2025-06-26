@@ -17,15 +17,12 @@ const Blogs = () => {
     const fetchBlogs = async () => {
       try {
         const response = await blogService.getBlogs();
-        // Handle both array response and object with ads property
         const data = Array.isArray(response) ? response : response?.ads || [];
         
         if (Array.isArray(data)) {
-          // Process image URLs to ensure they're complete
           const processedBlogs = data.map(blog => ({
             ...blog,
             images: blog.images?.map(image => {
-              // Remove "undefined" if it exists at the start of the path
               const cleanedImage = image.replace(/^undefined/, '');
               return image.startsWith('http') ? image : `${API_BASE_URL}${cleanedImage}`;
             }) || []
@@ -46,13 +43,11 @@ const Blogs = () => {
     fetchBlogs();
   }, []);
 
-  // Format date for display
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
-  // Get first image URL or placeholder
   const getFirstImage = (images) => {
     return images?.[0] || 'https://via.placeholder.com/400x200?text=Blog+Image';
   };
@@ -70,18 +65,17 @@ const Blogs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-yellow-600 mb-4">
             Victor Insights & Updates
           </h2>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+          <p className="text-lg text-yellow-700 max-w-2xl mx-auto">
             Latest news, tutorials and industry perspectives from our team
           </p>
         </motion.div>
 
-        {/* Loading state */}
         {loading && (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-500"></div>
           </div>
         )}
 
@@ -94,8 +88,9 @@ const Blogs = () => {
               grabCursor={true}
               centeredSlides={true}
               loop={true}
+              speed={600} // Increased swiping speed
               autoplay={{
-                delay: 5000,
+                delay: 500, // Faster autoplay
                 disableOnInteraction: false,
               }}
               coverflowEffect={{
@@ -139,13 +134,13 @@ const Blogs = () => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }} // Faster animation
                     whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
-                    className="bg-white rounded-2xl shadow-xl overflow-hidden h-full flex flex-col transform transition-all duration-300"
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden h-full flex flex-col transform transition-all duration-200" // Faster transition
                   >
                     <div className="relative">
                       <div className="absolute top-4 right-4 z-10">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-full">
+                        <span className="inline-block px-3 py-1 text-xs font-semibold text-yellow-600 bg-yellow-50 rounded-full">
                           Blog
                         </span>
                       </div>
@@ -161,7 +156,7 @@ const Blogs = () => {
                     </div>
                     
                     <div className="p-8 flex-1">
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                      <div className="flex items-center text-sm text-yellow-500 mb-4">
                         <span>3 min read</span>
                         <span className="mx-2">•</span>
                         <span>{formatDate(blog.createdAt)}</span>
@@ -171,7 +166,7 @@ const Blogs = () => {
                     </div>
                     <div className="px-8 py-6 bg-gray-50 border-t border-gray-100">
                       <button 
-                        className="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors flex items-center group"
+                        className="text-yellow-600 font-semibold hover:text-yellow-800 transition-colors flex items-center group"
                         onClick={() => window.location.href = `/blogs/${blog._id}`}
                       >
                         Read Full Article
@@ -188,10 +183,10 @@ const Blogs = () => {
             {/* Custom Navigation */}
             <div className="flex items-center justify-center mt-10">
               <button 
-                className="blog-button-prev w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-indigo-50 transition-colors mr-6"
+                className="blog-button-prev w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-yellow-50 transition-colors mr-6"
                 aria-label="Previous blog"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
@@ -199,10 +194,10 @@ const Blogs = () => {
               <div className="blog-pagination flex space-x-2 mx-4" />
               
               <button 
-                className="blog-button-next w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-indigo-50 transition-colors ml-6"
+                className="blog-button-next w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-yellow-50 transition-colors ml-6"
                 aria-label="Next blog"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -227,21 +222,21 @@ const Blogs = () => {
         .blog-bullet {
           width: 10px;
           height: 10px;
-          background: rgba(79, 70, 229, 0.3);
+          background: rgba(234, 179, 8, 0.3);
           border-radius: 50%;
           margin: 0 5px;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
         }
         
         .blog-bullet-active {
           width: 30px;
-          background: #4f46e5;
+          background: #eab308;
           border-radius: 10px;
         }
         
         .swiper-slide {
-          transition: all 0.4s ease;
+          transition: all 0.3s ease;
           transform-origin: center bottom;
         }
         

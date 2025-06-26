@@ -12,7 +12,7 @@ import UserDisplay from "./components/user/UserDisplay";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-gray-100'>
+      <div className='relative z-0 bg-gray-100 '>
         <Navbar />
                 <Toaster position="top-right" />
 
@@ -21,11 +21,13 @@ const App = () => {
             path="/"
             element={
               <>
-                <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+                <div className='w-full '>
                   <Hero />
                 </div>
+                <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl ">
+
                 <Works />
-                <Blogs />
+                <Blogs /></div>
                 <div className='relative z-0'>
                   <StarsCanvas />
                 </div>
